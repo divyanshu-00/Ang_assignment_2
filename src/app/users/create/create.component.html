@@ -1,0 +1,109 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+
+
+
+
+<form [formGroup]="formData" (ngSubmit)="onsubmit()">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" formControlName="name">
+        <span style="color: red;" *ngIf="nameValid && nameValid.invalid && nameValid.touched" >Invalid Field</span>
+    </div>
+    <div>
+    <label for="" class="form-label" style="display: block;">Gender</label>
+    <label>
+        <input type="radio" value="Male" formControlName="gender">
+          <span>Male</span>
+      </label>
+      <label>
+        <input type="radio" value="Female" formControlName="gender">
+          <span>Female</span>
+      </label>
+      <span style="color: red;" *ngIf="genderValid && genderValid.invalid && genderValid.touched" >Invalid Field</span>
+      
+    </div>
+    <div>
+
+    <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp"  formControlName="email">
+      <span style="color: red;" *ngIf="emailValid && emailValid.invalid && emailValid.touched" >Invalid Field</span>
+
+    </div>
+    <div>
+
+      <label for="phone" class="form-label">Contact Number</label>
+      <input type="email" class="form-control" id="phone" formControlName="phone">
+      <span style="color: red;" *ngIf="phoneValid && phoneValid.invalid && phoneValid.touched" >Invalid Field</span>
+
+    </div>
+    
+      <div>
+
+        <label for="category" class="form-label" style="display: block;">Category</label>
+        <label >
+
+            <input type="radio" formControlName="category" id="gen" value="gen">
+            <span>GEN</span>
+        </label>
+        
+        <label >
+            <input type="radio" formControlName="category" id="obc" value="obc">
+            <span>OBC</span>
+        </label>
+        
+        <label >
+            <input type="radio" formControlName="category" id="scst" value="scst">
+            <span>SC/ST</span>
+        </label>
+        <span style="color: red;" *ngIf="profileValid && profileValid.invalid && profileValid.touched" >Invalid Field</span>
+
+      </div>
+
+      <div>
+        <label for="" class="form-label" style="display: block;">Skills</label>
+        <div *ngFor="let item of skillArr">
+          <div>
+
+            <label >
+              <input type="checkbox"  id="{{item.name}}" name="{{item.name}}" (change)="onchange(item.id)" >
+              <span>{{item.name}}</span>  </label>
+          </div>
+        </div>
+
+
+
+
+<!-- 
+        <label >
+        <input type="checkbox" formControlName="skill1" id="c" #c >
+        <span>C</span>  </label>
+
+        <label class="px-2"> 
+        <input type="checkbox" formControlName="skill2" id="c++" #c++ value="c++" >   <span>C++</span> </label>
+
+        <label class="px-2">
+        <input type="checkbox" formControlName="skill3" id="java" value="java"> <span>Java</span> </label>
+
+        <label  class="px-2">
+        <input type="checkbox" formControlName="skill4" id="python" value="python">    <span>Python</span>   </label>
+
+        <label class=" px-2">
+        <input type="checkbox" formControlName="skill5" id="javascript" value="javascript">  <span>Javascript</span>  </label> -->
+    </div>
+
+    <div class="mb-3">
+        <label for="profile" class="form-label">Profile Picture</label>
+        <input class="form-control" type="file" id="profile" formControlName="profile">
+        <!-- <span style="color: red;" *ngIf="nameValid && nameValid.invalid && nameValid.touched" >Invalid Field</span> -->
+
+      </div>
+   
+    <!-- <button [disabled]="formData.invalid" type="submit" class="btn btn-primary">Submit</button> -->
+
+    <button type="submit" [disabled]="formData.invalid" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+     Preview</button>
+
+
+  </form>

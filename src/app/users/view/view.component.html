@@ -1,0 +1,45 @@
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+<!-- <p>Table is just a mapping of objects to table rows with <code>ngFor</code></p> -->
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Phone no.</th>
+    <th scope="col">Gender</th>
+    <th scope="col">Category</th>
+    <th scope="col">Skills</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of user; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      <!-- <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="me-2" style="width: 20px"> -->
+      {{ item.name }}
+    </td>
+    <td>{{ item.email }}</td>
+    <td>{{item.phone }}</td>
+    <td>{{item.gender }}</td>
+    <td>{{item.category }}</td>
+    <!-- <td>{{item.category }}</td> -->
+    <td>
+      <span *ngFor="let s of skill;index as j">
+        <span *ngIf="j == i">
+
+          <span *ngFor="let s2 of s">
+            
+            <span *ngIf="s2.isselected == true"> {{s2.name}} ,</span>
+          </span>
+        </span>
+      </span>
+    </td>
+ 
+  </tr>
+  </tbody>
+</table>
